@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flexbox Lab</title>
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>Flexbox Lab</h1>
+      <p class="lead">All boxes are 50px high. Colours and borders are intentionally distinct to make the layout easy to assess.</p>
+    </header>
+
+    <!-- Section 1 -->
+    <section aria-labelledby="s1">
+      <h2 id="s1">Two equally sized columns</h2>
+      <p class="note">The space between the columns, and between the columns and the outer box, is 10px.</p>
+      <div class="flex-container two" style="--gap: 10px;">
+        <div class="box b1" title="Column 1"></div>
+        <div class="box b2" title="Column 2"></div>
+      </div>
+    </section>
+
+    <!-- Section 2 -->
+    <section aria-labelledby="s2">
+      <h2 id="s2">Three equally sized columns</h2>
+      <p class="note">The space between the columns, and between the columns and the outer box, is 15px.</p>
+      <div class="flex-container three" style="--gap: 15px;">
+        <div class="box b3" title="Column 1"></div>
+        <div class="box b4" title="Column 2"></div>
+        <div class="box b5" title="Column 3"></div>
+      </div>
+    </section>
+
+    <!-- Section 3 -->
+    <section aria-labelledby="s3">
+      <h2 id="s3">Three unequal columns</h2>
+      <p class="note">The first column is exactly double the width of the other two. The space between columns, and between the columns and the outer box, is 12px. Each inner box has a 2px border.</p>
+      <div class="flex-container three-unequal inner-2px" style="--gap: 12px;">
+        <div class="box double b6" title="Double-width column"></div>
+        <div class="box b7" title="Column 2"></div>
+        <div class="box b8" title="Column 3"></div>
+      </div>
+    </section>
+
+    <!-- Section 4 -->
+    <section aria-labelledby="s4">
+      <h2 id="s4">Four equally sized columns and a footer</h2>
+      <p class="note">The space between columns, and between the columns and the outer box, is 12px. Each inner box has a 2px border.</p>
+      <div class="flex-container four inner-2px" style="--gap: 12px;">
+        <div class="box b1" title="Column 1"></div>
+        <div class="box b2" title="Column 2"></div>
+        <div class="box b3" title="Column 3"></div>
+        <div class="box b4" title="Column 4"></div>
+        <div class="footer-box" title="Footer"></div>
+      </div>
+    </section>
+
+  </main>
+</body>
+</html>
