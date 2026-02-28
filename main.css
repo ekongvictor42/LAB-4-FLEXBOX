@@ -1,0 +1,114 @@
+/* ===============================
+   Flexbox Lab – styles.css
+   - All boxes are 50px high
+   - Uses flexbox + gap to control spacing
+   - Section-specific requirements implemented with CSS variables per container
+   =============================== */
+
+* { box-sizing: border-box; }
+html { font-size: 16px; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  line-height: 1.4;
+  color: #222;
+  background: #f7f8fb;
+}
+.container {
+  max-width: 980px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+header { margin-bottom: 1.5rem; }
+h1 { font-size: 1.75rem; margin: 0 0 0.25rem; }
+p.lead { margin: 0 0 1rem; color: #555; }
+section { margin: 1.75rem 0; }
+h2 { font-size: 1.25rem; margin: 0 0 0.5rem; }
+.note { font-size: 0.95rem; color: #444; margin: 0 0 0.75rem; }
+
+/* Color palette */
+:root {
+  --c1: #e3f2fd; /* light blue */
+  --c2: #ffe0b2; /* light orange */
+  --c3: #dcedc8; /* light green */
+  --c4: #f8bbd0; /* pink */
+  --c5: #fff9c4; /* yellow */
+  --c6: #d1c4e9; /* purple */
+  --c7: #b2dfdb; /* teal */
+  --c8: #cfd8dc; /* blue grey */
+
+  --ink: #243447;
+  --outer: #8aa0b4;   /* outer border */
+  --inner: #627d98;   /* inner border */
+  --footer: #90a4ae;  /* footer border */
+}
+
+/* Shared flex container (the "outer box") */
+.flex-container {
+  --gap: 12px;             /* default; overridden per section */
+  display: flex;
+  gap: var(--gap);
+  padding: var(--gap);     /* space between columns and the outer box */
+  border: 2px solid var(--outer);
+  background: #fff;
+  border-radius: 6px;
+}
+
+/* Shared inner boxes */
+.box, .footer-box {
+  height: 50px;            /* all boxes height requirement */
+  border: 1px solid var(--inner);
+  background: var(--c1);
+}
+
+/* Give each box variant a distinct fill to make the layout obvious */
+.b1 { background: var(--c1); }
+.b2 { background: var(--c2); }
+.b3 { background: var(--c3); }
+.b4 { background: var(--c4); }
+.b5 { background: var(--c5); }
+.b6 { background: var(--c6); }
+.b7 { background: var(--c7); }
+.b8 { background: var(--c8); }
+
+/* --- Section 1: Two equally sized columns --- */
+.two .box {
+  /* exactly two columns: 1 gap between */
+  flex: 0 0 calc((100% - var(--gap)) / 2);
+}
+
+/* --- Section 2: Three equally sized columns --- */
+.three .box {
+  /* three columns: 2 gaps between */
+  flex: 0 0 calc((100% - (2 * var(--gap))) / 3);
+}
+
+/* --- Section 3: Three unequal columns --- */
+.three-unequal .box {
+  /* use grow to make first box 2x the width of the others */
+  flex: 1 1 0;
+}
+.three-unequal .box.double { flex-grow: 2; }
+
+/* Inner boxes need 2px border in sections 3 & 4 */
+.inner-2px .box { border-width: 2px; }
+
+/* --- Section 4: Four equally sized columns and a footer --- */
+.four { flex-wrap: wrap; }
+.four .box {
+  /* four columns: 3 gaps between */
+  flex: 0 0 calc((100% - (3 * var(--gap))) / 4);
+}
+.four .footer-box {
+  flex: 0 0 100%;
+  border: 2px solid var(--footer);
+  background: #eceff1;
+}
+
+/* Small-screen tweaks so layout still looks sensible (optional) */
+@media (max-width: 640px) {
+  .two .box, .three .box, .four .box {
+    flex-basis: calc((100% - var(--gap)) / 2);
+  }
+  .four .footer-box { flex-basis: 100%; }
+}
